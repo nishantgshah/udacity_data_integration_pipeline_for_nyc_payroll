@@ -1,0 +1,32 @@
+{
+	"name": "ds_storage_title_master",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storage_gen2_nycpayroll",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "TitleMaster.csv",
+				"folderPath": "dirpayrollfiles",
+				"fileSystem": "adlsnycpayroll-nishantkumar-s"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

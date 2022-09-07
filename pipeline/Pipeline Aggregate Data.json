@@ -1,0 +1,50 @@
+{
+	"name": "Pipeline Aggregate Data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Data flow Aggregation",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Dataflow Aggregate Data",
+						"type": "DataFlowReference",
+						"parameters": {
+							"dataflow_param_fiscalyear": "2000"
+						}
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "ls_storage_gen2_nycpayroll",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "adlsnycpayroll-nishantkumar-s/dirstaging"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"dataflow_param_fiscalyear": {
+				"type": "int",
+				"defaultValue": 2000
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-07T18:15:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
